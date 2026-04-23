@@ -11,6 +11,59 @@ python3 -m http.server 4173
 
 > 별도 빌드 도구 없이 정적 파일로 동작합니다.
 
+## 실제 웹에서 테스트하는 방법
+
+아래 3가지 중 하나를 선택하면 됩니다.
+
+### 방법 A) 같은 와이파이/사내망에서 모바일 테스트
+
+1. PC에서 서버 실행
+   ```bash
+   python3 -m http.server 4173 --bind 0.0.0.0
+   ```
+2. PC의 로컬 IP 확인
+   ```bash
+   hostname -I
+   ```
+3. 모바일 브라우저에서 접속  
+   `http://<PC_IP>:4173`  
+   예: `http://192.168.0.23:4173`
+
+### 방법 B) 외부 인터넷에서 바로 공유(터널링)
+
+1. 로컬 서버 실행
+   ```bash
+   python3 -m http.server 4173 --bind 0.0.0.0
+   ```
+2. ngrok 또는 Cloudflare Tunnel 중 하나 실행
+   ```bash
+   # ngrok 예시
+   ngrok http 4173
+   ```
+3. 발급된 `https://...` URL을 팀원과 공유해서 실기기 테스트
+
+### 방법 C) 무료 정적 호스팅으로 배포(권장)
+
+`index.html`, `styles.css`, `main.js`만 있으면 바로 배포됩니다.
+
+1. GitHub에 코드 푸시
+2. Vercel / Netlify / GitHub Pages 중 하나 연결
+3. 자동 발급된 도메인에서 접속해 테스트
+
+#### GitHub Pages 빠른 예시
+
+1. 저장소 설정 → **Pages**
+2. Source: `Deploy from branch`
+3. Branch: `main` + `/ (root)` 선택
+4. 몇 분 후 `https://<username>.github.io/<repo>/` 접속
+
+### 체크리스트(실테스트 시)
+
+- Safari(iOS), Chrome(Android), Desktop Chrome 3개 환경 확인
+- 3D 이동 시 프레임 드랍(저사양 모바일) 확인
+- 탭/클릭 시 콘텐츠 박스 생성 지연 시간 확인
+- 외부 이미지 차단/로딩 실패 시 대체 UI 필요 여부 확인
+
 ---
 
 ## 현재 구현 범위
