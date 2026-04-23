@@ -10,6 +10,7 @@ python3 -m http.server 4173
 ```
 
 > 별도 빌드 도구 없이 정적 파일로 동작합니다.
+> GitHub Pages로 5분 내 배포하려면 `DEPLOY_GITHUB_PAGES.md`를 참고하세요.
 
 ## 실제 웹에서 테스트하는 방법
 
