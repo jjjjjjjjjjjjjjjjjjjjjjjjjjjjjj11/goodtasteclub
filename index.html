@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taste Orbit — Discovery Commerce Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Taste Orbit</h1>
+      <p>무한히 취향을 발견하는 3D 쇼핑 경험 프로토타입</p>
+    </header>
+
+    <main>
+      <section id="stage" aria-label="랜덤 3D 상품/인물 공간"></section>
+      <aside id="inspector" class="hidden" aria-live="polite">
+        <button id="closeInspector" aria-label="닫기">×</button>
+        <div class="inspector-content">
+          <img id="focusImage" alt="선택된 이미지" />
+          <h2 id="focusTitle"></h2>
+          <p id="focusDesc"></p>
+        </div>
+      </aside>
+    </main>
+
+    <template id="nodeTemplate">
+      <article class="floating-node" role="button" tabindex="0">
+        <img class="node-image" alt="" />
+        <div class="bubble"></div>
+      </article>
+    </template>
+
+    <template id="infoBoxTemplate">
+      <article class="info-box" role="button" tabindex="0">
+        <img class="info-thumb" alt="" />
+        <div class="info-body">
+          <h3 class="info-title"></h3>
+          <p class="info-summary"></p>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
